@@ -1,6 +1,6 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.20'
-    id 'org.jetbrains.kotlin.kapt' version '1.3.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
+    id 'org.jetbrains.kotlin.kapt' version '1.4.0'
 }
 
 group 'io.mikael'
@@ -12,14 +12,9 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-
-    kapt "io.micronaut:micronaut-inject-java:1.0.3"
-
-    compileOnly('com.oracle.substratevm:svm:1.0.0-rc11') {
-        because "For Graal native-image building."
-        exclude group: "com.oracle.substratevm", module: "svm-hosted-native-windows-amd64"
-    }
-
+    kapt "io.micronaut:micronaut-inject-java:2.0.1"
+    kapt "io.micronaut:micronaut-graal:2.0.1"
+    compileOnly "org.graalvm.nativeimage:svm:20.2.0"
 }
 
 compileKotlin {
